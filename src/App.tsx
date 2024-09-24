@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { useEffect, useState } from "react";
 import "@elastic/eui/dist/eui_theme_dark.css"
 import ThemeSelector from "./components/ThemeSelector";
+import CreateMeeting from "./pages/CreateMeeting";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ function App() {
       <EuiThemeProvider modify={overrides}>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/create" element={<CreateMeeting />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="*" element={<Dashboard />} />
         </Routes>
