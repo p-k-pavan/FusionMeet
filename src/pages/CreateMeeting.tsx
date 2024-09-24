@@ -24,7 +24,7 @@ const CreateMeeting = () => {
                 icon={<EuiImage size="100%" alt='icon' src={meeting1} />}
                 title={"Create 1 on 1 Meeting"}
                 description="Create a personal meeting."
-                onClick={() => navigate('/create10n1')}
+                onClick={() => navigate('/create1on1')}
                 paddingSize='xl'
                 style={{minHeight:"280px"}}
             />

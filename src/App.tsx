@@ -1,4 +1,4 @@
-import { EuiProvider, EuiThemeColorMode, EuiThemeProvider } from "@elastic/eui"
+import { EuiGlobalToastList, EuiProvider, EuiThemeColorMode, EuiThemeProvider } from "@elastic/eui"
 import "@elastic/eui/dist/eui_theme_light.css"
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
@@ -8,12 +8,23 @@ import { useEffect, useState } from "react";
 import "@elastic/eui/dist/eui_theme_dark.css"
 import ThemeSelector from "./components/ThemeSelector";
 import CreateMeeting from "./pages/CreateMeeting";
+import OneOnOneMeeting from "./pages/OneOnOneMeeting";
+import { setToasts } from "./redux/slices/MeetingSlice";
 
 function App() {
   const dispatch = useAppDispatch();
   const isDarkTheme = useAppSelector((meet) => meet.auth.isDarkTheme);
   const [theme, setTheme] = useState<EuiThemeColorMode>("light");
   const [isInitialTheme, setIsInitialTheme] = useState(true);
+  const toasts = useAppSelector((zoom) => zoom.meetings.toasts);
+
+  const removeToast = (removedToast: { id: string }) => {
+    dispatch(
+      setToasts(
+        toasts.filter((toast: { id: string }) => toast.id !== removedToast.id)
+      )
+    );
+  };
 
   useEffect(() => {
     const theme = localStorage.getItem("fusionmeet-theme");
@@ -43,9 +54,15 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/create" element={<CreateMeeting />} />
+          <Route path="/create1on1" element={<OneOnOneMeeting />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="*" element={<Dashboard />} />
         </Routes>
+        <EuiGlobalToastList 
+        toasts={toasts}
+        dismissToast={removeToast}
+        toastLifeTimeMs={5000}
+        />
       </EuiThemeProvider>
     </EuiProvider>
     </ThemeSelector>

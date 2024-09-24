@@ -6,6 +6,7 @@ import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiText, EuiTextCo
 import { signOut } from 'firebase/auth';
 import { firebaseAuth } from '../utils/FireBase';
 import { changeTheme } from '../redux/slices/AuthSlice';
+import { getBreadCrums, getOneOnOneMeetingBreadCrumbs } from '../utils/breadCrums';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -15,9 +16,19 @@ const Header = () => {
     const [breadCrumbs,setBreadCrumbs] = useState([{text:"Dashboard"}]);
     const [isResponsive,setIsResponsive] = useState(false);
     const isDarkTheme = useAppSelector((meet) => meet.auth.isDarkTheme);
+
     const logout = ()=>{
       signOut(firebaseAuth);
     };
+
+    useEffect(()=>{
+      const {pathname} = location;
+      if(pathname==="/create")
+        setBreadCrumbs(getBreadCrums(navigate))
+      else if(pathname=="/create1on1")
+        setBreadCrumbs(getOneOnOneMeetingBreadCrumbs(navigate))
+    },[location,navigate])
+
     const invertTheme = () => {
       const theme = localStorage.getItem("fusionmeet-theme");
       localStorage.setItem("fusionmeet-theme",theme==="light"?"dark":"light")
