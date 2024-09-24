@@ -4,6 +4,7 @@ import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiImage } from '@elastic/eui';
 import dashboard1 from "../assets/dashboard1.png"
 import dashboard2 from "../assets/dashboard2.png"
 import dashboard3 from "../assets/dashboard3.png"
+import Header from '../components/Header';
 
 const Dashboard = () => {
 
@@ -16,6 +17,7 @@ const Dashboard = () => {
       height:"100vh",
       flexDirection:"column"
     }}>
+      <Header/>
       <EuiFlexGroup justifyContent='center' alignItems='center' 
       style={{margin:"5vh 10vw"}}
       >
