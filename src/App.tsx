@@ -10,6 +10,7 @@ import ThemeSelector from "./components/ThemeSelector";
 import CreateMeeting from "./pages/CreateMeeting";
 import OneOnOneMeeting from "./pages/OneOnOneMeeting";
 import { setToasts } from "./redux/slices/MeetingSlice";
+import VideoConference from "./pages/VideoConference";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -55,6 +56,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/create" element={<CreateMeeting />} />
           <Route path="/create1on1" element={<OneOnOneMeeting />} />
+          <Route path="/video-conference" element={<VideoConference />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="*" element={<Dashboard />} />
         </Routes>

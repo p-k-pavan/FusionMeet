@@ -6,7 +6,7 @@ import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiText, EuiTextCo
 import { signOut } from 'firebase/auth';
 import { firebaseAuth } from '../utils/FireBase';
 import { changeTheme } from '../redux/slices/AuthSlice';
-import { getBreadCrums, getOneOnOneMeetingBreadCrumbs } from '../utils/breadCrums';
+import { getBreadCrums, getOneOnOneMeetingBreadCrumbs, getVideoConferenceBreadCrumbs } from '../utils/breadCrums';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -27,7 +27,10 @@ const Header = () => {
         setBreadCrumbs(getBreadCrums(navigate))
       else if(pathname=="/create1on1")
         setBreadCrumbs(getOneOnOneMeetingBreadCrumbs(navigate))
+      else if(pathname=="/video-conference")
+        setBreadCrumbs(getVideoConferenceBreadCrumbs(navigate))
     },[location,navigate])
+    
 
     const invertTheme = () => {
       const theme = localStorage.getItem("fusionmeet-theme");
