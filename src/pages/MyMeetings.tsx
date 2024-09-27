@@ -16,6 +16,7 @@ import {
 } from '@elastic/eui';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import EditFlyout from '../components/EditFlyout';
 
 const MyMeetings = () => {
   useAuth();
@@ -160,8 +161,11 @@ const MyMeetings = () => {
           </EuiPanel>
         </EuiFlexItem>
       </EuiFlexGroup>
-      
-     
+      {showEditFlyout && editMeeting && (
+  <EditFlyout closeFlyout={closeEditFlyout} meeting={editMeeting} />
+)}
+
+
     
     </div>
   );

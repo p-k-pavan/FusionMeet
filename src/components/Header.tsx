@@ -6,7 +6,7 @@ import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiText, EuiTextCo
 import { signOut } from 'firebase/auth';
 import { firebaseAuth } from '../utils/FireBase';
 import { changeTheme } from '../redux/slices/AuthSlice';
-import { getBreadCrums, getOneOnOneMeetingBreadCrumbs, getVideoConferenceBreadCrumbs } from '../utils/breadCrums';
+import { getBreadCrums, getMyMeetingsBreadCrumbs, getOneOnOneMeetingBreadCrumbs, getVideoConferenceBreadCrumbs } from '../utils/breadCrums';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -29,6 +29,8 @@ const Header = () => {
         setBreadCrumbs(getOneOnOneMeetingBreadCrumbs(navigate))
       else if(pathname=="/video-conference")
         setBreadCrumbs(getVideoConferenceBreadCrumbs(navigate))
+      else if(pathname=="/mymeetings")
+        setBreadCrumbs(getMyMeetingsBreadCrumbs(navigate))
     },[location,navigate])
     
 

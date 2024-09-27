@@ -126,6 +126,8 @@ const OneOnOneMeeting = () => {
           <EuiSpacer />
           <CreateMeetingButton
             createMeeting={createMeeting}
+            isEdit={false}
+
           />
         </EuiForm>
 

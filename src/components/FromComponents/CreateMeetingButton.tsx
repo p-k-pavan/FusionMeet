@@ -2,25 +2,25 @@ import { EuiButton, EuiFlexGroup, EuiFlexItem } from '@elastic/eui'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const CreateMeetingButton = ({createMeeting}:{createMeeting:()=>void}) => {
+const CreateMeetingButton = (
+    { createMeeting, isEdit = false,closeFlyout }: 
+    { createMeeting: () => void; 
+        isEdit: boolean;
+        closeFlyout?: () => {};
+    }) => {
     const navigate = useNavigate();
     return (
         <EuiFlexGroup>
             <EuiFlexItem grow={false}>
                 <EuiButton color='danger' fill
-                    onClick={() => {
-                        const confirmCancel = window.confirm("Are you sure you want to cancel?");
-                        if (confirmCancel) {
-                          navigate("/");
-                        }
-                      }}
+                    onClick={() => (isEdit ? closeFlyout!() : navigate("/"))}
                 >
                     Cancel
                 </EuiButton>
 
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
-                <EuiButton  fill
+                <EuiButton fill
                     onClick={createMeeting}
                 >
                     Submit

@@ -145,6 +145,7 @@ const VideoConference = () => {
           <EuiSpacer />
           <CreateMeetingButton
             createMeeting={createMeeting}
+            isEdit={false}
           />
         </EuiForm>
 
