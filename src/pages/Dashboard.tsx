@@ -47,7 +47,7 @@ const Dashboard = () => {
           icon={<EuiImage size="5rem" alt='icon' src={dashboard3} />}
           title={"Meeting"}
           description="View meeting that your are invite to."
-          onClick={() => navigate('/create')}
+          onClick={() => navigate('/meetings')}
           paddingSize='xl'
           style={{minHeight:"280px"}}
 
