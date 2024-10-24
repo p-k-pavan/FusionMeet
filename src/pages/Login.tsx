@@ -47,7 +47,9 @@ const Login = () => {
           <EuiImage src={animation} alt="logo" /> 
         </EuiFlexItem>
         <EuiFlexItem>
-          <EuiImage src={logo} alt="logo" size="230px" />
+          <EuiText textAlign="center">
+            <h1>FUSIONMEET</h1>
+          </EuiText>
           <EuiSpacer size="xs" />
           <EuiText textAlign="center" grow={false}>
             <h3>
